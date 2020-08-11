@@ -1,6 +1,9 @@
 /**
  * Example store structure
  */
+
+'use strict';
+
 const store = {
   // 5 or more questions are required
   questions: [
@@ -31,10 +34,10 @@ const store = {
 };
 
 /**
- * 
+ *
  * Technical requirements:
- * 
- * Your app should include a render() function, that regenerates the view each time the store is updated. 
+ *
+ * Your app should include a render() function, that regenerates the view each time the store is updated.
  * See your course material, consult your instructor, and reference the slides for more details.
  *
  * NO additional HTML elements should be added to the index.html file.
@@ -42,7 +45,7 @@ const store = {
  * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
  *
  * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
- * 
+ *
  */
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
