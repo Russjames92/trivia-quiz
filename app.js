@@ -79,7 +79,7 @@ function generateQuizCont(quiz) {
 
 function generateQuestion() {
   let questionString = `<div class="text-container">
-                          <h2>${store.questions[store.questionNumber].question}</h2>
+                          <h2>Question ${store.questionNumber + 1} out of ${store.questions.length}.</br> ${store.questions[store.questionNumber].question}</h2>
                         </div>
                         <div class="btn-container">`;
 
