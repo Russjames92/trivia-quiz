@@ -4,34 +4,7 @@
 
 'use strict';
 
-const store = {
-  // 5 or more questions are required
-  questions: [
-    {
-      question: 'What color is broccoli?',
-      answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
-      ],
-      correctAnswer: 'green'
-    },
-    {
-      question: 'What is the current year?',
-      answers: [
-        '1970',
-        '2015',
-        '2019',
-        '2005'
-      ],
-      correctAnswer: '2019'
-    }
-  ],
-  quizStarted: false,
-  questionNumber: 0,
-  score: 0
-};
+
 
 /**
  *
@@ -47,6 +20,63 @@ const store = {
  * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
  *
  */
+
+function main() {
+  renderPage();
+  buttonHandler();
+}
+
+function buttonHandler() {
+  $('.btn-start').on('click', function () {store['quizStarted'] = true});
+  console.log(store.quizStarted);
+  console.log('handler ran');
+  renderPage();
+}
+
+function renderPage() {
+  const quizContent = generateQuizCont(store);
+  console.log('render page ran');
+  $('.quiz-container').html(quizContent);
+}
+
+function generateQuizCont(quiz) {
+  console.log('ran generateQuizCont');
+  if (quiz.quizStarted === false) {
+    return generateWelcome();
+  } else if (quiz.questionNumber < 5) {
+    return generateQuestion();
+  } else {
+    return generateEndPage();
+  }
+}
+
+function generateQuestion() {
+  const questionText = store.questions.question
+}
+
+function generateEndPage() {
+
+}
+
+function generateWelcome() {
+  console.log('ran generate welcome')
+  return `<div class="text-container">
+   <h2>Are You Ready To Test Your Knowledge?</h2>
+ </div>
+ <div class="btn-container">
+   <button class="btn-start">
+     <span>Begin</span>
+   </button>
+ </div>`;
+}
+
+//function generateShoppingItemsString(shoppingList) {
+// console.log("Generating shopping list element");
+// const items = shoppingList.map((item) => generateItemElement(item));
+// return items.join("");
+//}
+
+$(main());
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
