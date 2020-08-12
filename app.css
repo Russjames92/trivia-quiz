@@ -7,6 +7,11 @@
   *
 */
 
+body {
+  background-color: rgb(44, 44, 44);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 main {
   margin: 50px;
   display: flex;
@@ -15,8 +20,11 @@ main {
   align-content: center;
   border-style: solid;
   border-width: 3px;
-  border-color: black;
+  border-color: cornsilk;
+  background-color: rgb(21, 28, 53);
+  border-radius: 5px;
   padding: 20px;
+  color: cornsilk;
 }
 
 header {
@@ -24,8 +32,32 @@ header {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  border-style: solid;
+  background-color: rgb(21, 28, 53);
   margin-bottom: 20px;
+  color: cornsilk;
+}
+
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+button {
+  background-color: dodgerblue;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  min-width: 100%;
+  margin: 10px;
+  color: cornsilk;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: darkblue;
 }
 
 h1 {
@@ -33,17 +65,18 @@ h1 {
   text-align: center;
 }
 
-h6 {
-  text-align: center;
-}
-
-.answers {
+.text-container {
   display: flex;
+  justify-content: center;
 }
 
-.answer {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-content: space-between;
+.end-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }

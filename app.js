@@ -104,7 +104,7 @@ function generateQuestion() {
 }
 
 function generateEndPage() {
-  let endPageString = `<div class="text-container">
+  let endPageString = `<div class="end-container">
   <h2>END PAGE<h2>
   <p>Congratulations! You've completed the quiz<p>
   <p>Your score was ${store.score} out of ${store.questions.length}</p>
