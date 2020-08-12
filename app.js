@@ -1,7 +1,5 @@
 /* eslint-disable no-console */
-/**
- * Example store structure
- */
+
 
 /* global store,$ */
 
@@ -37,9 +35,9 @@ function buttonHandler() {
     console.log('buttonHandler ran');
     renderPage();
   });
-  $('.quiz-container').on('click', '.btn-ans', function (event) {
+  $('.quiz-container').on('click', '.btn-ans correct', function (event) {
     console.log('answer button ran');
-    console.log(event.currentTarget);
+    alert('correct');
     console.log(`${store.questions[store.questionNumber - 1].correctAnswer}`);
     if(event.currentTarget.toString() === `<button class="btn-ans">
     <span>${store.questions[store.questionNumber - 1].correctAnswer}</span>
@@ -69,25 +67,24 @@ function generateQuizCont(quiz) {
 }
 
 function generateQuestion() {
-  
-  const questionString = `<div class="text-container">
-  <h2>${store.questions[store.questionNumber].question}</h2>
-</div>
-<div class="btn-container">
-  <button class="btn-ans">
-    <span>${store.questions[store.questionNumber].answers[0]}</span>
-  </button>
-  <button class="btn-ans">
-    <span>${store.questions[store.questionNumber].answers[1]}</span>
-  </button>
-  <button class="btn-ans">
-    <span>${store.questions[store.questionNumber].answers[2]}</span>
-  </button>
-  <button class="btn-ans">
-    <span>${store.questions[store.questionNumber].answers[3]}</span>
-  </button>
-</div>`;
+  let questionString = `<div class="text-container">
+                          <h2>${store.questions[store.questionNumber].question}</h2>
+                        </div>
+                        <div class="btn-container">`;
 
+  store.questions[store.questionNumber].answers.forEach(function(answer) { 
+    if(answer === store.questions[store.questionNumber].correctAnswer){
+      questionString += `<button class="btn-ans btn-correct">
+                            <span>${answer}</span>
+                        </button>`;
+      console.log('btn-correct added to correct answer');
+    } else {
+      questionString += `<button class="btn-ans">
+                            <span>${answer}</span>
+                        </button>`;
+    }
+  });
+  questionString += `</div>`;
   store.questionNumber ++;
   return questionString;
 }
