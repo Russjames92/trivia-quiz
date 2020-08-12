@@ -28,6 +28,7 @@ function main() {
 }
 
 function buttonHandler() {
+
   $('.quiz-container').on('click', '.btn-start', function (event) {
     console.log('start button ran');
     store.quizStarted = true;
@@ -35,18 +36,28 @@ function buttonHandler() {
     console.log('buttonHandler ran');
     renderPage();
   });
-  $('.quiz-container').on('click', '.btn-ans correct', function (event) {
+
+  $('.quiz-container').on('click', '.btn-correct', function (event) {
     console.log('answer button ran');
     alert('correct');
     console.log(`${store.questions[store.questionNumber - 1].correctAnswer}`);
-    if(event.currentTarget.toString() === `<button class="btn-ans">
-    <span>${store.questions[store.questionNumber - 1].correctAnswer}</span>
-  </button>`) {
+   
     store.score ++;
     console.log(store.score);
-  }
     renderPage();
   });
+
+  $('.quiz-container').on('click', '.btn-ans', function(event) {
+    alert('wrong');
+    renderPage();
+  });
+
+  $('.quiz-container').on('click', '.restart', function(event) {
+    store.score = 0;
+    store.questionNumber = 0;
+    renderPage();
+  });
+
 }
 
 function renderPage() {
@@ -74,7 +85,7 @@ function generateQuestion() {
 
   store.questions[store.questionNumber].answers.forEach(function(answer) { 
     if(answer === store.questions[store.questionNumber].correctAnswer){
-      questionString += `<button class="btn-ans btn-correct">
+      questionString += `<button class="btn-correct">
                             <span>${answer}</span>
                         </button>`;
       console.log('btn-correct added to correct answer');
@@ -84,13 +95,27 @@ function generateQuestion() {
                         </button>`;
     }
   });
-  questionString += `</div>`;
+  questionString += `</div>
+  <div class="score">
+    <span>Your score is ${store.score} correct, out of a possible ${store.questions.length}</span>
+  </div>`;
   store.questionNumber ++;
   return questionString;
 }
 
 function generateEndPage() {
-
+  let endPageString = `<div class="text-container">
+  <h2>END PAGE<h2>
+  <p>Congratulations! You've completed the quiz<p>
+  <p>Your score was ${store.score} out of ${store.questions.length}</p>
+  </div>
+  <div class="btn-container">
+    <button class="restart">
+      <span>Try Again!</span>
+    </button>
+  </div>`;
+  
+  return endPageString;
 }
 
 function generateWelcome() {
