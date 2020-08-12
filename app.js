@@ -1,6 +1,9 @@
+/* eslint-disable no-console */
 /**
  * Example store structure
  */
+
+/* global store,$ */
 
 'use strict';
 
@@ -27,10 +30,25 @@ function main() {
 }
 
 function buttonHandler() {
-  $('.btn-start').on('click', function () {store['quizStarted'] = true});
-  console.log(store.quizStarted);
-  console.log('handler ran');
-  renderPage();
+  $('.quiz-container').on('click', '.btn-start', function (event) {
+    console.log('start button ran');
+    store.quizStarted = true;
+    console.log(store.quizStarted);
+    console.log('buttonHandler ran');
+    renderPage();
+  });
+  $('.quiz-container').on('click', '.btn-ans', function (event) {
+    console.log('answer button ran');
+    console.log(event.currentTarget);
+    console.log(`${store.questions[store.questionNumber - 1].correctAnswer}`);
+    if(event.currentTarget.toString() === `<button class="btn-ans">
+    <span>${store.questions[store.questionNumber - 1].correctAnswer}</span>
+  </button>`) {
+    store.score ++;
+    console.log(store.score);
+  }
+    renderPage();
+  });
 }
 
 function renderPage() {
@@ -41,9 +59,9 @@ function renderPage() {
 
 function generateQuizCont(quiz) {
   console.log('ran generateQuizCont');
-  if (quiz.quizStarted === false) {
+  if (store.quizStarted === false) {
     return generateWelcome();
-  } else if (quiz.questionNumber < 5) {
+  } else if (store.questionNumber < store.questions.length) {
     return generateQuestion();
   } else {
     return generateEndPage();
@@ -51,7 +69,27 @@ function generateQuizCont(quiz) {
 }
 
 function generateQuestion() {
-  const questionText = store.questions.question
+  
+  const questionString = `<div class="text-container">
+  <h2>${store.questions[store.questionNumber].question}</h2>
+</div>
+<div class="btn-container">
+  <button class="btn-ans">
+    <span>${store.questions[store.questionNumber].answers[0]}</span>
+  </button>
+  <button class="btn-ans">
+    <span>${store.questions[store.questionNumber].answers[1]}</span>
+  </button>
+  <button class="btn-ans">
+    <span>${store.questions[store.questionNumber].answers[2]}</span>
+  </button>
+  <button class="btn-ans">
+    <span>${store.questions[store.questionNumber].answers[3]}</span>
+  </button>
+</div>`;
+
+  store.questionNumber ++;
+  return questionString;
 }
 
 function generateEndPage() {
