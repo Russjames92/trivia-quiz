@@ -81,6 +81,7 @@ function generateQuestion() {
   let questionString = `<div class="text-container">
                           <h2>Question ${store.questionNumber + 1} out of ${store.questions.length}.</br> ${store.questions[store.questionNumber].question}</h2>
                         </div>
+                        <form>
                         <div class="btn-container">`;
 
   store.questions[store.questionNumber].answers.forEach(function(answer) { 
@@ -95,7 +96,7 @@ function generateQuestion() {
                         </button>`;
     }
   });
-  questionString += `</div>
+  questionString += `</div></form>
   <div class="score">
     <span>Your score is ${store.score} correct, out of a possible ${store.questions.length}</span>
   </div>`;
@@ -123,6 +124,9 @@ function generateWelcome() {
   return `<div class="text-container">
    <h2>Are You Ready To Test Your Knowledge?</h2>
  </div>
+ <div class="text-container">
+  <p>To navigate quiz via keyboard, press TAB to scroll between answers and ENTER to make your selection.</p>
+ </div>
  <div class="btn-container">
    <button class="btn-start">
      <span>Begin</span>
@@ -136,7 +140,7 @@ function generateWelcome() {
 // return items.join("");
 //}
 
-$(main());
+$(main);
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
