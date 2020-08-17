@@ -39,7 +39,7 @@ function buttonHandler() {
 
   $('.quiz-container').on('click', '.btn-correct', function (event) {
     console.log('answer button ran');
-    alert('correct');
+    alert('Correct');
     console.log(`${store.questions[store.questionNumber - 1].correctAnswer}`);
    
     store.score ++;
@@ -48,7 +48,7 @@ function buttonHandler() {
   });
 
   $('.quiz-container').on('click', '.btn-ans', function(event) {
-    alert('wrong');
+    alert('Incorrect');
     renderPage();
   });
 
