@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 'use strict';
 
 const store = {
-  // 5 or more questions are required
+ 
   questions: [
     {
       question: 'Coffee is derived from a fruit.',
