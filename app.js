@@ -27,14 +27,14 @@ function buttonHandler() {
   $('.quiz-container').on('click', '.submit', function (event) {
     event.preventDefault();
     if (selectedAnswer === `${store.questions[store.questionNumber - 1].correctAnswer}`) {
-      alert('Correct');
+      alert(`${selectedAnswer} is Correct`);
       store.score++;
       renderPage();
     } if (selectedAnswer === `${store.questions[store.questionNumber - 1].answers}`) {
       alert(`Incorrect! The correct answer is "${store.questions[store.questionNumber - 1].correctAnswer}"`);
       renderPage();
     } if (selectedAnswer === "") {
-      alert(`Sorry, you must select one of the answers before moving on.`);
+      alert('Sorry, you must select one of the answers before moving on.');
     }
     selectedAnswer = "";
   });
@@ -82,7 +82,7 @@ function generateQuestion() {
     }
   });
 
-      questionString += `<hr>
+  questionString += `<hr>
                           <button class="submit">
                             <span>SUBMIT</span>
                           </button>`;

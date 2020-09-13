@@ -48,6 +48,10 @@ button {
   font-weight: bold;
 }
 
+button:focus {
+  background-color: green;
+}
+
 hr {
   border: 1px solid cornsilk;
   margin: 20px 0 20px 0;
